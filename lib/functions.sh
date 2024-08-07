@@ -32,6 +32,7 @@ setupProxy() {
 		fi
 	fi
 
+    echo "$HTTPS_PROXY_FULL_URL"
 	log INFO "Configuring proxy servers: $http http proxy (we're not supporting unencrypted comms), $https https proxy"
 	export HTTPS_PROXY_HOST HTTPS_PROXY_PORT HTTPS_PROXY_FULL_URL
 }
@@ -308,7 +309,7 @@ function sync_secrets() {
         -v /etc/bridgehead/trusted-ca-certs:/conf/trusted-ca-certs:ro \
         -e TLS_CA_CERTIFICATES_DIR=/conf/trusted-ca-certs \
         -e NO_PROXY=localhost,127.0.0.1 \
-        -e ALL_PROXY=$HTTPS_PROXY_FULL_URL \
+        -e ALL_PROXY=$HTTPS_PROXY_URL \
         -e PROXY_ID=$PROXY_ID \
         -e BROKER_URL=$BROKER_URL \
         -e OIDC_PROVIDER=secret-sync-central.oidc-client-enrollment.$BROKER_ID \
