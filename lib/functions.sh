@@ -314,7 +314,7 @@ function sync_secrets() {
         -e BROKER_URL=$BROKER_URL \
         -e OIDC_PROVIDER=secret-sync-central.oidc-client-enrollment.$BROKER_ID \
         -e SECRET_DEFINITIONS=$secret_sync_args \
-        --entrypoint "env" \
+        -e RUST_LOGS=debug \
         docker.verbis.dkfz.de/cache/samply/secret-sync-local:latest
 
     set -a # Export variables as environment variables
