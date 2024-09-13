@@ -81,6 +81,7 @@ for DIR in /etc/bridgehead $(pwd); do
     fi
     git_updated="true"
     if [ "$DIR" == "/srv/docker/bridgehead" ]; then
+      #trigger update with empty commit
       git -C "$DIR" checkout develop
       REPORT_BRANCH_NAME=$(git -C "$DIR" branch --show-current)
       REPORT_STATUS_CHECK=$(git -C "$DIR" status --porcelain)
